@@ -120,7 +120,7 @@
                                         .addClass(options.leavingClass);
                                 }
 
-                            } else if (elTop < 0) {
+                            } else if (elTop <= 0) {
                                 $element
                                     .removeClass(options.goneClass)
                                     .removeClass(options.leavingClass)
