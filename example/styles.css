@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+h2 {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+.row {
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.columns:last-child {
+    float: right;
+}
+
+.sticky .caption {
+    position: fixed;
+    top: 50px;
+}
+
+.sticky-leaving .caption, .sticky-gone .caption {
+    position: absolute;
+    bottom: 0;
+}
