@@ -1,14 +1,15 @@
 {
-    "name": "angular-sticky-container",
-    "version": "0.0.3",
-    "description": "Angular directive that provides 'sticky' functionality",
-    "main": "angular-sticky-container.js",
-    "ignore": [
-        "*",
-        "!README.md",
-        "!angular-sticky-container.js"
-    ],
-    "dependencies": {
-        "angular": ">=1.2.22"
-    }
+  "name": "angular-sticky-container",
+  "version": "0.0.4",
+  "description": "Angular directive that provides 'sticky' functionality",
+  "main": "angular-sticky-container.js",
+  "ignore": [
+    "*",
+    "!README.md",
+    "!angular-sticky-container.js"
+  ],
+  "dependencies": {
+    "angular": ">=1.2.22",
+    "hamsterjs": "~1.0.5"
+  }
 }
