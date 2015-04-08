@@ -106,19 +106,17 @@
 
                             var targetHeight = target.clientHeight;
 
-                            if (elTop + elHeight - targetHeight < 0) {
-                                if (elTop + elHeight < 0) {
-                                    $element
-                                        .removeClass(options.stickyClass)
-                                        .removeClass(options.leavingClass)
-                                        .addClass(options.goneClass);
+                            if (elTop + elHeight < 0) {
+                                $element
+                                    .removeClass(options.stickyClass)
+                                    .removeClass(options.leavingClass)
+                                    .addClass(options.goneClass);
 
-                                } else {
-                                    $element
-                                        .removeClass(options.stickyClass)
-                                        .removeClass(options.goneClass)
-                                        .addClass(options.leavingClass);
-                                }
+                            } else if (elTop + elHeight - targetHeight < 0) {
+                                $element
+                                    .removeClass(options.stickyClass)
+                                    .removeClass(options.goneClass)
+                                    .addClass(options.leavingClass);
 
                             } else if (elTop <= 0) {
                                 $element
