@@ -9,7 +9,7 @@
                     restrict: 'A',
                     link: function($scope, $element, $attrs) {
 
-                        // Normalise scrolling/wheel event
+                        // Normalise scrolling/wheel event (fixes jank)
                         var hamster = new Hamster($document[0].documentElement);
                         hamster.wheel(angular.noop);
 
@@ -101,13 +101,25 @@
                         var scroll = function() {
 
                             var rect = findRect($element[0]),
-                                // scrollY = (scroller.scrollY || scroller.scrollTop) + $element[0].offsetTop,
                                 targets = angular.element($element[0].querySelectorAll(options.targetSelector));
 
                             angular.forEach(targets, function(target) {
 
-                                var offset = angular.element(target).attr('hj-sticky-offset') ? parseInt(angular.element(target).attr('hj-sticky-offset')) : 0,
-                                    elTop = rect[1] + offset,
+                                var hjStickyScrollOffset = parseInt(angular.element(target).attr('hj-sticky-scroll-offset')),
+                                    hjStickyElementOffset = parseInt(angular.element(target).attr('hj-sticky-element-offset')),
+                                    parentPaddingTop = parseInt(_style($element[0].parentNode, 'padding-top')),
+                                    top = parseInt(_style(target, 'top')),
+                                    marginTop = parseInt(_style(target, 'margin-top')),
+
+                                    scrollOffset = !isNaN(hjStickyScrollOffset) ? hjStickyScrollOffset :
+                                    !isNaN(parentPaddingTop) ? parentPaddingTop :
+                                    !isNaN(marginTop) ? marginTop : 0,
+                                    
+                                    elOffset = !isNaN(hjStickyElementOffset) ? hjStickyElementOffset :
+                                    !isNaN(top) ? top :
+                                    !isNaN(marginTop) ? marginTop : 0,
+
+                                    elTop = rect[1] - scrollOffset,
                                     elHeight = rect[3];
 
                                 var targetHeight = target.clientHeight;
@@ -138,8 +150,8 @@
                                 }
 
                                 if (options.translate) {
-                                    if (elTop + elHeight - targetHeight < 0) {
-                                        target.style.transform = 'translateY(' + (elHeight - targetHeight) + 'px)';
+                                    if (elTop + elHeight - elOffset - targetHeight < 0) {
+                                        target.style.transform = 'translateY(' + (elHeight - elOffset - targetHeight) + 'px)';
 
                                     } else {
                                         target.style.transform = 'translateY(' + Math.max(0, 0 - elTop) + 'px)';
