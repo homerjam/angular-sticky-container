@@ -6,114 +6,9 @@
     angular.module('hj.stickyContainer').constant('Hamster', Hamster);
 
     angular.module('hj.stickyContainer').service('customModernizr', ['$window', function($window) {
-        /* Modernizr 2.8.3 (Custom Build) | MIT & BSD
-         * Build: http://modernizr.com/download/#-touch-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes
-         */
-        return function(a, b, c) {
-            function y(a) {
-                i.cssText = a
-            }
-
-            function z(a, b) {
-                return y(l.join(a + ";") + (b || ""))
-            }
-
-            function A(a, b) {
-                return typeof a === b
-            }
-
-            function B(a, b) {
-                return !!~("" + a).indexOf(b)
-            }
-
-            function C(a, b) {
-                for (var d in a) {
-                    var e = a[d];
-                    if (!B(e, "-") && i[e] !== c) return b == "pfx" ? e : !0
-                }
-                return !1
-            }
-
-            function D(a, b, d) {
-                for (var e in a) {
-                    var f = b[a[e]];
-                    if (f !== c) return d === !1 ? a[e] : A(f, "function") ? f.bind(d || b) : f
-                }
-                return !1
-            }
-
-            function E(a, b, c) {
-                var d = a.charAt(0).toUpperCase() + a.slice(1),
-                    e = (a + " " + n.join(d + " ") + d).split(" ");
-                return A(b, "string") || A(b, "undefined") ? C(e, b) : (e = (a + " " + o.join(d + " ") + d).split(" "), D(e, b, c))
-            }
-            var d = "2.8.3",
-                e = {},
-                f = b.documentElement,
-                g = "modernizr",
-                h = b.createElement(g),
-                i = h.style,
-                j, k = {}.toString,
-                l = " -webkit- -moz- -o- -ms- ".split(" "),
-                m = "Webkit Moz O ms",
-                n = m.split(" "),
-                o = m.toLowerCase().split(" "),
-                p = {},
-                q = {},
-                r = {},
-                s = [],
-                t = s.slice,
-                u, v = function(a, c, d, e) {
-                    var h, i, j, k, l = b.createElement("div"),
-                        m = b.body,
-                        n = m || b.createElement("body");
-                    if (parseInt(d, 10))
-                        while (d--) j = b.createElement("div"), j.id = e ? e[d] : g + (d + 1), l.appendChild(j);
-                    return h = ["&#173;", '<style id="s', g, '">', a, "</style>"].join(""), l.id = g, (m ? l : n).innerHTML += h, n.appendChild(l), m || (n.style.background = "", n.style.overflow = "hidden", k = f.style.overflow, f.style.overflow = "hidden", f.appendChild(n)), i = c(l, a), m ? l.parentNode.removeChild(l) : (n.parentNode.removeChild(n), f.style.overflow = k), !!i
-                },
-                w = {}.hasOwnProperty,
-                x;
-            !A(w, "undefined") && !A(w.call, "undefined") ? x = function(a, b) {
-                return w.call(a, b)
-            } : x = function(a, b) {
-                return b in a && A(a.constructor.prototype[b], "undefined")
-            }, Function.prototype.bind || (Function.prototype.bind = function(b) {
-                var c = this;
-                if (typeof c != "function") throw new TypeError;
-                var d = t.call(arguments, 1),
-                    e = function() {
-                        if (this instanceof e) {
-                            var a = function() {};
-                            a.prototype = c.prototype;
-                            var f = new a,
-                                g = c.apply(f, d.concat(t.call(arguments)));
-                            return Object(g) === g ? g : f
-                        }
-                        return c.apply(b, d.concat(t.call(arguments)))
-                    };
-                return e
-            }), p.touch = function() {
-                var c;
-                return "ontouchstart" in a || a.DocumentTouch && b instanceof DocumentTouch ? c = !0 : v(["@media (", l.join("touch-enabled),("), g, ")", "{#modernizr{top:9px;position:absolute}}"].join(""), function(a) {
-                    c = a.offsetTop === 9
-                }), c
-            };
-            for (var F in p) x(p, F) && (u = F.toLowerCase(), e[u] = p[F](), s.push((e[u] ? "" : "no-") + u));
-            return e.addTest = function(a, b) {
-                if (typeof a == "object")
-                    for (var d in a) x(a, d) && e.addTest(d, a[d]);
-                else {
-                    a = a.toLowerCase();
-                    if (e[a] !== c) return e;
-                    b = typeof b == "function" ? b() : b, typeof enableClasses != "undefined" && enableClasses && (f.className += " " + (b ? "" : "no-") + a), e[a] = b
-                }
-                return e
-            }, y(""), h = j = null, e._version = d, e._prefixes = l, e._domPrefixes = o, e._cssomPrefixes = n, e.testProp = function(a) {
-                return C([a])
-            }, e.testAllProps = E, e.testStyles = v, e.prefixed = function(a, b, c) {
-                return b ? E(a, b, c) : E(a, "pfx")
-            }, e
-        }($window, $window.document);
+            /*! modernizr 3.0.0-alpha.3 (Custom Build) | MIT *
+             * http://v3.modernizr.com/download/#-csspositionsticky-domprefixes-prefixed-prefixedcss-prefixes !*/
+            return function(e,n,t){function r(e,n){return typeof e===n}function i(){var e,n,t,i,o,s,f;for(var a in h){if(e=[],n=h[a],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(i=r(n.fn,"function")?n.fn():n.fn,o=0;o<e.length;o++)s=e[o],f=s.split("."),1===f.length?Modernizr[f[0]]=i:(!Modernizr[f[0]]||Modernizr[f[0]]instanceof Boolean||(Modernizr[f[0]]=new Boolean(Modernizr[f[0]])),Modernizr[f[0]][f[1]]=i),y.push((i?"":"no-")+f.join("-"))}}function o(e){var n=_.className,t=Modernizr._config.classPrefix||"";if(Modernizr._config.enableJSClass){var r=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(r,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),_.className=n)}function s(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function f(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function a(e,n){return!!~(""+e).indexOf(n)}function u(e,n){return function(){return e.apply(n,arguments)}}function l(e,n,t){var i;for(var o in e)if(e[o]in n)return t===!1?e[o]:(i=n[e[o]],r(i,"function")?u(i,t||n):i);return!1}function p(){var e=n.body;return e||(e=w("body"),e.fake=!0),e}function c(e,n,t,r){var i,o,s,f,a="modernizr",u=w("div"),l=p();if(parseInt(t,10))for(;t--;)s=w("div"),s.id=r?r[t]:a+(t+1),u.appendChild(s);return i=["&#173;",'<style id="s',a,'">',e,"</style>"].join(""),u.id=a,(l.fake?l:u).innerHTML+=i,l.appendChild(u),l.fake&&(l.style.background="",l.style.overflow="hidden",f=_.style.overflow,_.style.overflow="hidden",_.appendChild(l)),o=n(u,e),l.fake?(l.parentNode.removeChild(l),_.style.overflow=f,_.offsetHeight):u.parentNode.removeChild(u),!!o}function d(n,r){var i=n.length;if("CSS"in e&&"supports"in e.CSS){for(;i--;)if(e.CSS.supports(f(n[i]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var o=[];i--;)o.push("("+f(n[i])+":"+r+")");return o=o.join(" or "),c("@supports ("+o+") { #modernizr { position: absolute; } }",function(e){return"absolute"==getComputedStyle(e,null).position})}return t}function m(e,n,i,o){function f(){l&&(delete j.style,delete j.modElem)}if(o=r(o,"undefined")?!1:o,!r(i,"undefined")){var u=d(e,i);if(!r(u,"undefined"))return u}var l,p,c,m,v;for(j.style||(l=!0,j.modElem=w("modernizr"),j.style=j.modElem.style),c=e.length,p=0;c>p;p++)if(m=e[p],v=j.style[m],a(m,"-")&&(m=s(m)),j.style[m]!==t){if(o||r(i,"undefined"))return f(),"pfx"==n?m:!0;try{j.style[m]=i}catch(y){}if(j.style[m]!=v)return f(),"pfx"==n?m:!0}return f(),!1}function v(e,n,t,i,o){var s=e.charAt(0).toUpperCase()+e.slice(1),f=(e+" "+b.join(s+" ")+s).split(" ");return r(n,"string")||r(n,"undefined")?m(f,n,i,o):(f=(e+" "+S.join(s+" ")+s).split(" "),l(f,n,t))}var y=[],h=[],g={_version:"3.0.0-alpha.3",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){h.push({name:e,fn:n,options:t})},addAsyncTest:function(e){h.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=g,Modernizr=new Modernizr;var C=g._config.usePrefixes?" -webkit- -moz- -o- -ms- ".split(" "):[];g._prefixes=C;var _=n.documentElement,x="Moz O ms Webkit",S=g._config.usePrefixes?x.toLowerCase().split(" "):[];g._domPrefixes=S;var w=function(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):n.createElement.apply(n,arguments)};Modernizr.addTest("csspositionsticky",function(){var e="position:",n="sticky",t=w("modernizr"),r=t.style;return r.cssText=e+C.join(n+";"+e).slice(0,-e.length),-1!==r.position.indexOf(n)});var b=g._config.usePrefixes?x.split(" "):[];g._cssomPrefixes=b;var z=function(n){var r,i=C.length,o=e.CSSRule;if("undefined"==typeof o)return t;if(!n)return!1;if(n=n.replace(/^@/,""),r=n.replace(/-/g,"_").toUpperCase()+"_RULE",r in o)return"@"+n;for(var s=0;i>s;s++){var f=C[s],a=f.toUpperCase()+"_"+r;if(a in o)return"@-"+f.toLowerCase()+"-"+n}return!1},E={elem:w("modernizr")};Modernizr._q.push(function(){delete E.elem});var j={style:E.elem.style};Modernizr._q.unshift(function(){delete j.style}),g.testAllProps=v;{var k=g.prefixed=function(e,n,t){return 0===e.indexOf("@")?z(e):(-1!=e.indexOf("-")&&(e=s(e)),n?v(e,n,t):v(e,"pfx"))};g.prefixedCSS=function(e){var n=k(e);return n&&f(n)}}i(),o(y),delete g.addTest,delete g.addAsyncTest;for(var P=0;P<Modernizr._q.length;P++)Modernizr._q[P]();return Modernizr;}($window,$window.document);
     }]);
 
     angular.module('hj.stickyContainer').directive('hjStickyContainer', ['$window', '$document', 'Hamster', 'customModernizr',
@@ -121,12 +16,6 @@
             return {
                 restrict: 'A',
                 link: function($scope, $element, $attrs) {
-
-                    // Normalise scrolling/wheel event (fixes jank)
-                    var hamster = new Hamster($document[0].documentElement);
-                    hamster.wheel(angular.noop);
-
-                    var prefixedTransform = customModernizr.prefixed('transform');
 
                     var defaults = {
                         targetSelector: '[hj-sticky-target]',
@@ -137,6 +26,46 @@
                     };
 
                     var options = angular.extend(defaults, $scope.$eval($attrs.hjStickyContainer));
+
+                    var prefix = (function() {
+                        var styles = window.getComputedStyle(document.documentElement, ''),
+                            pre = (Array.prototype.slice
+                                .call(styles)
+                                .join('')
+                                .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
+                            )[1],
+                            dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
+                        return {
+                            dom: dom,
+                            lowercase: pre,
+                            css: '-' + pre + '-',
+                            js: pre[0].toUpperCase() + pre.substr(1)
+                        };
+                    })();
+
+                    // Normalise scrolling/wheel event (fixes jank)
+                    var hamster = new Hamster($document[0].documentElement);
+                    hamster.wheel(angular.noop);
+
+                    var prefixedTransform = customModernizr.prefixed('transform');
+
+                    var targets;
+
+                    if (customModernizr.csspositionsticky) {
+                        targets = angular.element($element[0].querySelectorAll(options.targetSelector));
+
+                        angular.forEach(targets, function(target) {
+                            var hjStickyScrollOffset = parseInt(angular.element(target).attr('hj-sticky-scroll-offset'));
+
+                            target = angular.element(target);
+
+                            target.css('position', 'sticky');
+                            target.css('position', prefix.css + 'sticky');
+                            target.css('top', hjStickyScrollOffset + 'px');
+                        });
+
+                        return;
+                    }
 
                     var _parents = function(node, ps) {
                         if (node.parentNode === null) {
@@ -215,8 +144,9 @@
 
                     var scroll = function() {
 
-                        var rect = findRect($element[0]),
-                            targets = angular.element($element[0].querySelectorAll(options.targetSelector));
+                        var rect = findRect($element[0]);
+                        
+                        targets = angular.element($element[0].querySelectorAll(options.targetSelector));
 
                         angular.forEach(targets, function(target) {
 
@@ -264,7 +194,7 @@
                                     .removeClass(options.goneClass);
                             }
 
-                            if (options.translate) {                                
+                            if (options.translate) {
                                 if (elTop + elHeight - elOffset - targetHeight < 0) {
                                     target.style[prefixedTransform] = 'translateY(' + (elHeight - elOffset - targetHeight) + 'px)';
 
