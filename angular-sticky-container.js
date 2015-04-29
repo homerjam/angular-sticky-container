@@ -43,7 +43,7 @@
                         };
                     })();
 
-                    // Normalise scrolling/wheel event (fixes jank)
+                    // Normalise scrolling/wheel event (fixes some jank)
                     var hamster = new Hamster($document[0].documentElement);
                     hamster.wheel(angular.noop);
 
@@ -55,7 +55,7 @@
                         targets = angular.element($element[0].querySelectorAll(options.targetSelector));
 
                         angular.forEach(targets, function(target) {
-                            var hjStickyScrollOffset = parseInt(angular.element(target).attr('hj-sticky-scroll-offset'));
+                            var hjStickyScrollOffset = parseInt(angular.element(target).attr('hj-sticky-scroll-offset')) || 0;
 
                             target = angular.element(target);
 
@@ -63,8 +63,6 @@
                             target.css('position', prefix.css + 'sticky');
                             target.css('top', hjStickyScrollOffset + 'px');
                         });
-
-                        return;
                     }
 
                     var _parents = function(node, ps) {
@@ -194,7 +192,7 @@
                                     .removeClass(options.goneClass);
                             }
 
-                            if (options.translate) {
+                            if (options.translate && !customModernizr.csspositionsticky) {
                                 if (elTop + elHeight - elOffset - targetHeight < 0) {
                                     target.style[prefixedTransform] = 'translateY(' + (elHeight - elOffset - targetHeight) + 'px)';
 
