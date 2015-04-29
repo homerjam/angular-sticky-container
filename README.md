@@ -13,7 +13,7 @@ http://homerjam.github.io/angular-sticky-container/
 ## Usage
 
     <div hj-sticky-container>
-        <div hj-sticky-target hj-sticky-offset="-50">
+        <div hj-sticky-target hj-sticky-scroll-offset="50">
             <p>I will stay within the bounds of my container</p>
         </div>
 	</div>
