@@ -22,7 +22,8 @@
                         stickyClass: 'sticky',
                         leavingClass: 'sticky-leaving',
                         goneClass: 'sticky-gone',
-                        translate: true
+                        enableTranslate: true,
+                        enableSticky: true
                     };
 
                     var options = angular.extend(defaults, $scope.$eval($attrs.hjStickyContainer));
@@ -51,7 +52,7 @@
 
                     var targets;
 
-                    if (customModernizr.csspositionsticky) {
+                    if (customModernizr.csspositionsticky && options.enableSticky) {
                         targets = angular.element($element[0].querySelectorAll(options.targetSelector));
 
                         angular.forEach(targets, function(target) {
@@ -192,7 +193,7 @@
                                     .removeClass(options.goneClass);
                             }
 
-                            if (options.translate && !customModernizr.csspositionsticky) {
+                            if (options.enableTranslate && !customModernizr.csspositionsticky) {
                                 if (elTop + elHeight - elOffset - targetHeight < 0) {
                                     target.style[prefixedTransform] = 'translateY(' + (elHeight - elOffset - targetHeight) + 'px)';
 
