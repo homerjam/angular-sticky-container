@@ -1,6 +1,6 @@
 {
   "name": "angular-sticky-container",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Angular directive that provides 'sticky' functionality",
   "main": "angular-sticky-container.js",
   "ignore": [
