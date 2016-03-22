@@ -1,12 +1,13 @@
 {
   "name": "angular-sticky-container",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Angular directive that provides 'sticky' functionality",
   "main": "angular-sticky-container.js",
   "ignore": [
     "*",
     "!README.md",
-    "!angular-sticky-container.js"
+    "!angular-sticky-container.js",
+    "!custom-modernizr.js"
   ],
   "dependencies": {
     "angular": ">=1.2.22",
