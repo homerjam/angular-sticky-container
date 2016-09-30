@@ -102,8 +102,8 @@
               var obj2 = obj;
               var x = 0;
               var y = 0;
-              var w;
-              var h;
+              var w = 0;
+              var h = 0;
 
               while ((obj && obj.offsetParent) || (obj && obj.parentNode)) {
                 var style = $window.getComputedStyle(obj);
@@ -167,23 +167,17 @@
                     .removeClass(options.leavingClass)
                     .addClass(options.goneClass);
 
-                } else if (elTop + elHeight - targetHeight < 0) {
+                } else if (elTop + (elHeight - targetHeight) < 0) {
                   $element
                     .removeClass(options.stickyClass)
                     .removeClass(options.goneClass)
                     .addClass(options.leavingClass);
 
-                } else if (elTop <= 0) {
-                  $element
-                    .removeClass(options.goneClass)
-                    .removeClass(options.leavingClass)
-                    .addClass(options.stickyClass);
-
                 } else {
                   $element
-                    .removeClass(options.stickyClass)
                     .removeClass(options.leavingClass)
-                    .removeClass(options.goneClass);
+                    .removeClass(options.goneClass)
+                    .addClass(options.stickyClass);
                 }
 
                 if (options.enableTranslate && !customModernizr.csspositionsticky) {
@@ -218,9 +212,7 @@
               throttledCheckPosition();
             };
 
-            $timeout(function() {
-              checkPosition();
-            });
+            checkPosition();
 
             angular.element($window).on('resize', resize);
             angular.element(scroller).on('scroll', throttledCheckPosition);
