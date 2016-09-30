@@ -3,10 +3,8 @@
 
   angular.module('hj.stickyContainer', [])
 
-    .constant('Hamster', Hamster)
-
-    .directive('hjStickyContainer', ['$window', '$document', 'Hamster', 'customModernizr',
-      function ($window, $document, Hamster, customModernizr) {
+    .directive('hjStickyContainer', ['$window', '$document', '$timeout', 'customModernizr',
+      function ($window, $document, $timeout, customModernizr) {
         return {
           restrict: 'A',
           link: function ($scope, $element, $attrs) {
@@ -136,7 +134,7 @@
               return [x, y, w, h];
             };
 
-            var scroll = function () {
+            var checkPosition = function () {
 
               var rect = findRect($element[0]);
 
@@ -146,7 +144,7 @@
 
                 var hjStickyScrollOffset = parseInt(angular.element(target).attr('hj-sticky-scroll-offset'));
                 var hjStickyElementOffset = parseInt(angular.element(target).attr('hj-sticky-element-offset'));
-                var parentPaddingTop = parseInt(_style($element[0].parentNode, 'padding-top'));
+                var parentPaddingTop = $element[0].parentNode ? parseInt(_style($element[0].parentNode, 'padding-top')) : 0;
                 var top = parseInt(_style(target, 'top'));
                 var marginTop = parseInt(_style(target, 'margin-top'));
 
@@ -214,20 +212,22 @@
               };
             };
 
-            var throttledScroll = throttleOnAnimationFrame(scroll);
+            var throttledCheckPosition = throttleOnAnimationFrame(checkPosition);
 
             var resize = function () {
-              throttledScroll();
+              throttledCheckPosition();
             };
 
-            resize();
+            $timeout(function() {
+              checkPosition();
+            });
 
             angular.element($window).on('resize', resize);
-            angular.element(scroller).on('scroll', throttledScroll);
+            angular.element(scroller).on('scroll', throttledCheckPosition);
 
             $scope.$on('$destroy', function () {
               angular.element($window).off('resize', resize);
-              angular.element(scroller).off('scroll', throttledScroll);
+              angular.element(scroller).off('scroll', throttledCheckPosition);
             });
 
           }
